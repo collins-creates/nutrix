@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nutrix AI Dashboard - Advanced AI-powered food analysis with real-time health scores, nutrition insights, and personalized guidance based on your health conditions." />
+  <meta name="keywords" content="food nutrition analysis, health score calculator, diet intelligence, personalized nutrition guide, food health impact, calorie counter with AI, nutrition tracking" />
+  <meta name="author" content="Nutrix AI" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#10a37f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Nutrix AI" />
+  
+  <!-- Security & Privacy -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nutrix AI Dashboard - Your Clinical Nutrition Workspace" />
+  <meta property="og:description" content="Advanced AI food analysis with real-time health scores and personalized guidance" />
+  <meta property="og:site_name" content="Nutrix AI" />
+  
+  <!-- Additional SEO -->
+  <link rel="preconnect" href="https://gnvqwzigmzkytlwbyrtf.supabase.co" />
+  <link rel="preconnect" href="https://generativelanguage.googleapis.com" />
+  <link rel="dns-prefetch" href="https://gnvqwzigmzkytlwbyrtf.supabase.co" />
+  <link rel="dns-prefetch" href="https://generativelanguage.googleapis.com" />
+  
+  <title>Nutrix AI | Dashboard - Clinical Nutrition Intelligence</title>
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Nutrix AI Dashboard",
+    "description": "Clinical nutrition intelligence and food analysis dashboard",
+    "url": "https://collins-creates.github.io/nutrix/dashboard.html",
+    "applicationCategory": "HealthApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Nutrix AI"
+    },
+    "inLanguage": "en"
+  }
+  </script>
+</head>
+<body>
+  <main class="container">
+    <div class="brand-bar">
+      <div class="brand-bar__title">
+        <span class="brand-bar__label">Nutrition intelligence dashboard</span>
+        <span class="brand-bar__name">Nutrix AI</span>
+      </div>
+      <button id="logout-button" type="button">Logout</button>
+    </div>
+
+    <section class="card hero-card" aria-labelledby="dashboard-heading">
+      <div class="hero-top">
+        <div>
+          <h1 id="dashboard-heading" class="page-title">Clinical food analysis for every meal</h1>
+          <p class="page-copy">Interpret your diet with scientific accuracy, energy guidance, and actionable health scores for every intake.</p>
+        </div>
+        <div class="hero-meta">
+          <span class="pill-tag">Professional health intelligence</span>
+          <p class="result-copy">Your workspace updates in real time. Last refreshed <time id="dashboard-time">just now</time>.</p>
+        </div>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <span class="metric-label">Analyses completed</span>
+          <strong id="metric-analyses">0</strong>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Average health score</span>
+          <strong id="metric-average">0</strong>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Recent warnings</span>
+          <strong id="metric-warnings">0</strong>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Last analyzed</span>
+          <strong id="metric-latest">No entry</strong>
+        </div>
+      </div>
+
+      <form id="food-form" class="form-grid" novalidate>
+        <div class="input-field">
+          <label for="food-input">Food or menu item</label>
+          <input id="food-input" name="foodQuery" type="text" placeholder="e.g. ugali and beans" required autocomplete="off" />
+        </div>
+        <div class="input-field">
+          <label for="barcode-input">Barcode (optional)</label>
+          <input id="barcode-input" name="barcode" type="text" placeholder="Scan or enter barcode" autocomplete="off" />
+        </div>
+        <button id="analyze-button" type="submit">Analyze nutrition</button>
+        <p id="dashboard-status" class="status-line" aria-live="polite">Enter a food item to begin analysis.</p>
+      </form>
+    </section>
+
+    <div class="dashboard-grid">
+      <div class="section-row section-row--large">
+        <section class="card result-block" id="result-panel" hidden>
+          <div class="result-panel">
+            <div class="tag-list" id="purpose-tags"></div>
+            <div>
+              <h2 class="panel-title" id="nutrition-title">Nutrition summary</h2>
+              <p class="result-copy" id="nutrition-copy">Detailed food metrics and AI intelligence for the selected meal.</p>
+            </div>
+            <div class="summary-grid" id="nutrition-summary"></div>
+            <div>
+              <strong>Health score</strong>
+              <div class="progress-track" aria-label="Food health score">
+                <div class="progress-fill" id="health-progress" style="width: 0%;"></div>
+              </div>
+            </div>
+            <div>
+              <h3 class="panel-title">AI insights</h3>
+              <p class="result-copy" id="ai-insights"></p>
+            </div>
+            <div id="recommended-meal" class="result-copy highlight-text"></div>
+            <div class="condition-review" id="condition-review" hidden>
+              <h3 class="panel-title">Condition compatibility</h3>
+              <p class="result-copy" id="condition-summary"></p>
+            </div>
+            <div>
+              <h3 class="panel-title">Risk & warning</h3>
+              <div class="warning-list" id="warning-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="dashboard-sidebar">
+          <section class="card sidebar-card">
+            <h3 class="panel-title">Quick workflow</h3>
+            <div class="action-grid">
+              <button type="button" class="action-card" id="action-analyze">New analysis</button>
+              <button type="button" class="action-card" id="action-history">Review history</button>
+              <button type="button" class="action-card" id="action-alerts">View warnings</button>
+              <button type="button" class="action-card" id="action-export">Export summary</button>
+            </div>
+          </section>
+
+          <section class="card sidebar-card" id="history-panel">
+            <h3 class="panel-title">Recent food history</h3>
+            <div class="history-list" id="history-list"></div>
+          </section>
+
+          <section class="card sidebar-card">
+            <h3 class="panel-title">Support resources</h3>
+            <div class="link-list">
+              <a href="#" class="dashboard-link">Clinical note template</a>
+              <a href="#" class="dashboard-link">Nutrition reference library</a>
+              <a href="#" class="dashboard-link">Export PDF summary</a>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "Nutrix AI - Clinical Nutrition Intelligence",
+  "short_name": "Nutrix AI",
+  "description": "AI-assisted clinical nutrition platform for meal analysis and health guidance.",
+  "start_url": "/nutrix/",
+  "display": "standalone",
+  "background_color": "#f5f9fb",
+  "theme_color": "#10a37f",
+  "orientation": "portrait-primary",
+  "scope": "/nutrix/",
+  "lang": "en-US",
+  "categories": ["health", "medical", "nutrition", "productivity"],
+  "icons": [],
+  "shortcuts": [
+    {
+      "name": "Food Analysis",
+      "short_name": "Analyze Food",
+      "description": "Quick food nutrition analysis",
+      "url": "/dashboard#analyze",
+      "icons": []
+    },
+    {
+      "name": "Health History",
+      "short_name": "History",
+      "description": "View nutrition history",
+      "url": "/dashboard#history",
+      "icons": []
+    }
+  ],
+  "screenshots": []
+}
