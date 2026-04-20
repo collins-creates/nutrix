@@ -42,6 +42,9 @@ http://localhost:3000/signup.html
 - Open Food Facts, USDA, and Gemini calls are routed through `/api/*`.
 - Static assets are served with caching headers for better performance.
 - Security headers are applied using `helmet`.
+- API endpoints are rate-limited to reduce abuse and brute-force traffic.
+- API payloads are validated (query/prompt length and bounds checks) before outbound calls.
+- Production error responses avoid leaking internal upstream failure details.
 - `.gitignore` prevents `.env` and `node_modules` from being committed.
 
 ## Notes
@@ -77,3 +80,12 @@ http://localhost:3000/signup.html
 
 - Backend health check: `https://your-render-url/healthz` should return `{"ok":true}`.
 - Frontend should load from `https://collins-creates.github.io/nutrix/` and API calls should go to your Render domain (check browser Network tab).
+
+## Production security checklist
+
+- Keep GitHub Pages source set to **GitHub Actions** so `public/config.js` is generated at deploy time (do not commit secrets to frontend files).
+- Set GitHub repository secrets: `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `API_PROXY_PATH`.
+- Set Render secrets: `GEMINI_API_KEY`, `USDA_API_KEY`, and `FRONTEND_ORIGIN=https://collins-creates.github.io`.
+- In Supabase, enable and verify **RLS policies** for `profiles` and `food_history`; only authenticated users should access their own rows.
+- Restrict Supabase Auth redirect URLs to your production domain(s) only.
+- Rotate API keys immediately if any secret was ever committed or shared.

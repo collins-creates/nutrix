@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 
 dotenv.config();
 
@@ -14,6 +15,25 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-1.5-flash';
 const USDA_API_KEY = process.env.USDA_API_KEY;
 const FRONTEND_ORIGIN = process.env.FRONTEND_ORIGIN || 'https://collins-creates.github.io';
+const NODE_ENV = process.env.NODE_ENV || 'development';
+const IS_PRODUCTION = NODE_ENV === 'production';
+const MAX_QUERY_LENGTH = 200;
+const MAX_PROMPT_LENGTH = 6000;
+
+const allowedModels = new Set([
+  'gemini-1.5-flash',
+  'gemini-1.5-pro',
+  'gemini-2.0-flash',
+  'gemini-2.0-flash-lite',
+]);
+const allowedOrigins = new Set(
+  [FRONTEND_ORIGIN, 'https://collins-creates.github.io']
+    .concat(IS_PRODUCTION ? [] : ['http://localhost:3000', 'http://127.0.0.1:5500'])
+);
+
+if (!GEMINI_API_KEY || !USDA_API_KEY) {
+  console.warn('Warning: missing API keys. /api/gemini or /api/usda will fail until configured.');
+}
 
 app.use(
   helmet({
@@ -23,7 +43,7 @@ app.use(
         scriptSrc: ["'self'", 'https://cdn.jsdelivr.net'],
         connectSrc: [
           "'self'",
-          'http://localhost:3000',
+          ...(IS_PRODUCTION ? [] : ['http://localhost:3000']),
           'https://gnvqwzigmzkytlwbyrtf.supabase.co',
           'https://*.supabase.co'
         ],
@@ -37,7 +57,17 @@ app.use(
     },
   })
 );
-app.use(express.json());
+app.disable('x-powered-by');
+app.use(express.json({ limit: '100kb' }));
+
+const apiRateLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many requests. Please try again later.' },
+});
+app.use('/api', apiRateLimiter);
 
 // SEO, security, and API headers.
 app.use((req, res, next) => {
@@ -49,7 +79,6 @@ app.use((req, res, next) => {
   // SEO Headers
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
-  res.setHeader('X-XSS-Protection', '1; mode=block');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   
   // Allow search engines to index (except dashboard)
@@ -69,12 +98,6 @@ app.use((req, res, next) => {
   }
 
   const requestOrigin = req.headers.origin;
-  const allowedOrigins = new Set([
-    FRONTEND_ORIGIN,
-    'https://collins-creates.github.io',
-    'http://localhost:3000',
-    'http://127.0.0.1:5500',
-  ]);
 
   if (requestOrigin && allowedOrigins.has(requestOrigin)) {
     res.header('Access-Control-Allow-Origin', requestOrigin);
@@ -96,9 +119,12 @@ app.get('/healthz', (_req, res) => {
 });
 
 app.get('/api/openfoodfacts', async (req, res) => {
-  const query = req.query.q;
+  const query = typeof req.query.q === 'string' ? req.query.q.trim() : '';
   if (!query) {
     return res.status(400).json({ error: 'Missing query parameter q' });
+  }
+  if (query.length > MAX_QUERY_LENGTH) {
+    return res.status(400).json({ error: `Query too long. Maximum ${MAX_QUERY_LENGTH} characters.` });
   }
 
   try {
@@ -107,7 +133,9 @@ app.get('/api/openfoodfacts', async (req, res) => {
     const data = await response.json();
     return res.status(response.status).json(data);
   } catch (error) {
-    return res.status(502).json({ error: 'Unable to fetch Open Food Facts data', detail: error.message });
+    const payload = { error: 'Unable to fetch Open Food Facts data' };
+    if (!IS_PRODUCTION) payload.detail = error.message;
+    return res.status(502).json(payload);
   }
 });
 
@@ -117,9 +145,17 @@ app.post('/api/usda', async (req, res) => {
     return res.status(500).json({ error: 'Missing USDA_API_KEY in environment' });
   }
 
-  const { query, pageSize = 1 } = req.body;
+  const query = typeof req.body.query === 'string' ? req.body.query.trim() : '';
+  const pageSize = Number.isInteger(req.body.pageSize) ? req.body.pageSize : 1;
+
   if (!query) {
     return res.status(400).json({ error: 'Missing query in request body' });
+  }
+  if (query.length > MAX_QUERY_LENGTH) {
+    return res.status(400).json({ error: `Query too long. Maximum ${MAX_QUERY_LENGTH} characters.` });
+  }
+  if (pageSize < 1 || pageSize > 10) {
+    return res.status(400).json({ error: 'pageSize must be between 1 and 10.' });
   }
 
   try {
@@ -138,7 +174,9 @@ app.post('/api/usda', async (req, res) => {
     return res.status(200).json(data);
   } catch (error) {
     console.error('USDA fetch error:', error.message);
-    return res.status(502).json({ error: 'Unable to fetch USDA data', detail: error.message });
+    const payload = { error: 'Unable to fetch USDA data' };
+    if (!IS_PRODUCTION) payload.detail = error.message;
+    return res.status(502).json(payload);
   }
 });
 
@@ -147,11 +185,15 @@ app.post('/api/gemini', async (req, res) => {
     return res.status(500).json({ error: 'Missing GEMINI_API_KEY in environment' });
   }
 
-  const prompt = req.body.prompt;
-  const model = req.body.model || GEMINI_MODEL;
+  const prompt = typeof req.body.prompt === 'string' ? req.body.prompt.trim() : '';
+  const requestedModel = typeof req.body.model === 'string' ? req.body.model.trim() : GEMINI_MODEL;
+  const model = allowedModels.has(requestedModel) ? requestedModel : GEMINI_MODEL;
 
   if (!prompt) {
     return res.status(400).json({ error: 'Missing prompt in request body' });
+  }
+  if (prompt.length > MAX_PROMPT_LENGTH) {
+    return res.status(400).json({ error: `Prompt too long. Maximum ${MAX_PROMPT_LENGTH} characters.` });
   }
 
   try {
@@ -169,7 +211,9 @@ app.post('/api/gemini', async (req, res) => {
     const data = await response.json();
     return res.status(response.status).json(data);
   } catch (error) {
-    return res.status(502).json({ error: 'Unable to reach Gemini API', detail: error.message });
+    const payload = { error: 'Unable to reach Gemini API' };
+    if (!IS_PRODUCTION) payload.detail = error.message;
+    return res.status(502).json(payload);
   }
 });
 
