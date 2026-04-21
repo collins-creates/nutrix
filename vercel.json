@@ -1,17 +1,12 @@
 {
   "version": 2,
   "name": "nutrix",
-  "buildCommand": "npm run build",
+  "buildCommand": "node build.js",
   "outputDirectory": "public",
-  "functions": {
-    "api/index.js": {
-      "maxDuration": 30
-    }
-  },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/backend/server.js"
+      "dest": "/api"
     },
     {
       "src": "/robots.txt",
@@ -31,52 +26,40 @@
     },
     {
       "src": "/css/(.*)",
-      "dest": "/frontend/css/$1"
+      "dest": "/css/$1"
     },
     {
       "src": "/js/(.*)",
-      "dest": "/frontend/js/$1"
-    },
-    {
-      "src": "/images/(.*)",
-      "dest": "/frontend/images/$1"
-    },
-    {
-      "src": "/icons/(.*)",
-      "dest": "/frontend/icons/$1"
-    },
-    {
-      "src": "/screenshots/(.*)",
-      "dest": "/frontend/screenshots/$1"
+      "dest": "/js/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/frontend/index.html"
+      "dest": "/index.html"
     }
   ],
-  "env": {
-    "NODE_ENV": "production",
-    "PORT": "3000"
-  },
   "headers": [
     {
-      "source": "/api/(.*)",
+      "source": "/(.*)",
       "headers": [
         {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
         },
         {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET, POST, PUT, DELETE, OPTIONS"
+          "key": "X-Frame-Options",
+          "value": "DENY"
         },
         {
-          "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type, Authorization"
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
         },
         {
-          "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
         }
       ]
     },
@@ -105,46 +88,6 @@
           "value": "application/javascript"
         }
       ]
-    },
-    {
-      "source": "/images/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
     }
   ],
   "redirects": [
@@ -155,11 +98,6 @@
     },
     {
       "source": "/index",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/search",
       "destination": "/",
       "permanent": true
     }
