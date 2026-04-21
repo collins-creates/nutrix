@@ -1,16 +1,20 @@
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
-const compression = require('compression');
-const morgan = require('morgan');
-const path = require('path');
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import compression from 'compression';
+import morgan from 'morgan';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const config = require('./config/config');
-const cache = require('./config/database');
-const infoodsService = require('./services/infoodsService');
-const { generalLimiter, searchLimiter, autocompleteLimiter } = require('./middleware/security');
-const searchRoutes = require('./routes/search');
-const logger = require('./utils/logger');
+import config from './config/config.js';
+import cache from './config/database.js';
+import infoodsService from './services/infoodsService.js';
+import { generalLimiter, searchLimiter, autocompleteLimiter } from './middleware/security.js';
+import searchRoutes from './routes/search.js';
+import logger from './utils/logger.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 

@@ -1,11 +1,12 @@
 {
   "name": "nutrix-backend",
   "version": "1.0.0",
-  "description": "Nutrition Search Engine Backend API",
-  "main": "server.js",
+  "description": "Backend API for Nutrix Nutrition Search Engine",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
+    "dev": "NODE_ENV=development node server.js",
     "test": "jest"
   },
   "keywords": ["nutrition", "api", "usda", "food", "search"],

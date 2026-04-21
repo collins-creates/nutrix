@@ -1,2 +1,3 @@
-// Vercel entrypoint - exports the server
-export { default } from './server.js';
+// Vercel entrypoint - imports and exports the server
+import server from './server.js';
+export default server;
