@@ -1,0 +1,397 @@
+# Nutrix Nutrition Search Engine - Robots.txt
+# Generated: 2024-04-21
+
+User-agent: *
+Allow: /
+Allow: /api/search
+Allow: /api/autocomplete
+Allow: /api/food
+Allow: /api/health
+
+# Block sensitive areas
+Disallow: /api/admin
+Disallow: /api/internal
+Disallow: /api/logs
+Disallow: /api/config
+Disallow: /api/debug
+Disallow: /api/stats
+Disallow: /api/analytics
+Disallow: /api/metrics
+Disallow: /api/monitoring
+Disallow: /api/health/internal
+Disallow: /api/cache
+Disallow: /api/system
+Disallow: /api/backup
+Disallow: /api/export
+Disallow: /api/import
+Disallow: /api/bulk
+Disallow: /api/batch
+Disallow: /api/queue
+Disallow: /api/jobs
+Disallow: /api/worker
+Disallow: /api/cron
+Disallow: /api/webhook
+Disallow: /api/integration
+Disallow: /api/third-party
+Disallow: /api/external
+Disallow: /api/partner
+Disallow: /api/affiliate
+Disallow: /api/advertising
+Disallow: /api/marketing
+Disallow: /api/promotion
+Disallow: /api/campaign
+Disallow: /api/newsletter
+Disallow: /api/email
+Disallow: /api/sms
+Disallow: /api/push
+Disallow: /api/notification
+Disallow: /api/alert
+Disallow: /api/reminder
+Disallow: /api/schedule
+Disallow: /api/planning
+Disallow: /api/goal
+Disallow: /api/tracking
+Disallow: /api/analytics
+Disallow: /api/insights
+Disallow: /api/reports
+Disallow: /api/export
+Disallow: /api/print
+Disallow: /api/pdf
+Disallow: /api/csv
+Disallow: /api/excel
+Disallow: /api/json
+Disallow: /api/xml
+Disallow: /api/rss
+Disallow: /api/atom
+Disallow: /api/sitemap
+Disallow: /api/feed
+Disallow: /api/podcast
+Disallow: /api/video
+Disallow: /api/audio
+Disallow: /api/image
+Disallow: /api/document
+Disallow: /api/file
+Disallow: /api/upload
+Disallow: /api/download
+Disallow: /api/stream
+Disallow: /api/live
+Disallow: /api/realtime
+Disallow: /api/websocket
+Disallow: /api/graphql
+Disallow: /api/rest
+Disallow: /api/soap
+Disallow: /api/rpc
+Disallow: /api/grpc
+Disallow: /api/thrift
+Disallow: /api/protobuf
+Disallow: /api/avro
+Disallow: /api/msgpack
+Disallow: /api/cbor
+Disallow: /api/yaml
+Disallow: /api/toml
+Disallow: /api/ini
+Disallow: /api/conf
+Disallow: /api/config
+Disallow: /api/settings
+Disallow: /api/preferences
+Disallow: /api/profile
+Disallow: /api/account
+Disallow: /api/user
+Disallow: /api/auth
+Disallow: /api/login
+Disallow: /api/logout
+Disallow: /api/register
+Disallow: /api/signup
+Disallow: /api/forgot
+Disallow: /api/reset
+Disallow: /api/verify
+Disallow: /api/confirm
+Disallow: /api/activate
+Disallow: /api/deactivate
+Disallow: /api/suspend
+Disallow: /api/ban
+Disallow: /api/block
+Disallow: /api/unblock
+Disallow: /api/report
+Disallow: /api/flag
+Disallow: /api/moderate
+Disallow: /api/approve
+Disallow: /api/reject
+Disallow: /api/publish
+Disallow: /api/unpublish
+Disallow: /api/archive
+Disallow: /api/delete
+Disallow: /api/restore
+Disallow: /api/backup
+Disallow: /api/recover
+Disallow: /api/migrate
+Disallow: /api/sync
+Disallow: /api/replicate
+Disallow: /api/shard
+Disallow: /api/partition
+Disallow: /api/index
+Disallow: /api/search/internal
+Disallow: /api/search/admin
+Disallow: /api/search/debug
+Disallow: /api/search/logs
+Disallow: /api/search/metrics
+Disallow: /api/search/stats
+Disallow: /api/search/analytics
+Disallow: /api/search/insights
+Disallow: /api/search/reports
+Disallow: /api/search/export
+Disallow: /api/search/import
+Disallow: /api/search/bulk
+Disallow: /api/search/batch
+Disallow: /api/search/queue
+Disallow: /api/search/jobs
+Disallow: /api/search/worker
+Disallow: /api/search/cron
+Disallow: /api/search/webhook
+Disallow: /api/search/integration
+Disallow: /api/search/third-party
+Disallow: /api/search/external
+Disallow: /api/search/partner
+Disallow: /api/search/affiliate
+Disallow: /api/search/advertising
+Disallow: /api/search/marketing
+Disallow: /api/search/promotion
+Disallow: /api/search/campaign
+Disallow: /api/search/newsletter
+Disallow: /api/search/email
+Disallow: /api/search/sms
+Disallow: /api/search/push
+Disallow: /api/search/notification
+Disallow: /api/search/alert
+Disallow: /api/search/reminder
+Disallow: /api/search/schedule
+Disallow: /api/search/planning
+Disallow: /api/search/goal
+Disallow: /api/search/tracking
+Disallow: /api/search/analytics
+Disallow: /api/search/insights
+Disallow: /api/search/reports
+Disallow: /api/search/export
+Disallow: /api/search/print
+Disallow: /api/search/pdf
+Disallow: /api/search/csv
+Disallow: /api/search/excel
+Disallow: /api/search/json
+Disallow: /api/search/xml
+Disallow: /api/search/rss
+Disallow: /api/search/atom
+Disallow: /api/search/sitemap
+Disallow: /api/search/feed
+Disallow: /api/search/podcast
+Disallow: /api/search/video
+Disallow: /api/search/audio
+Disallow: /api/search/image
+Disallow: /api/search/document
+Disallow: /api/search/file
+Disallow: /api/search/upload
+Disallow: /api/search/download
+Disallow: /api/search/stream
+Disallow: /api/search/live
+Disallow: /api/search/realtime
+Disallow: /api/search/websocket
+Disallow: /api/search/graphql
+Disallow: /api/search/rest
+Disallow: /api/search/soap
+Disallow: /api/search/rpc
+Disallow: /api/search/grpc
+Disallow: /api/search/thrift
+Disallow: /api/search/protobuf
+Disallow: /api/search/avro
+Disallow: /api/search/msgpack
+Disallow: /api/search/cbor
+Disallow: /api/search/yaml
+Disallow: /api/search/toml
+Disallow: /api/search/ini
+Disallow: /api/search/conf
+Disallow: /api/search/config
+Disallow: /api/search/settings
+Disallow: /api/search/preferences
+Disallow: /api/search/profile
+Disallow: /api/search/account
+Disallow: /api/search/user
+Disallow: /api/search/auth
+Disallow: /api/search/login
+Disallow: /api/search/logout
+Disallow: /api/search/register
+Disallow: /api/search/signup
+Disallow: /api/search/forgot
+Disallow: /api/search/reset
+Disallow: /api/search/verify
+Disallow: /api/search/confirm
+Disallow: /api/search/activate
+Disallow: /api/search/deactivate
+Disallow: /api/search/suspend
+Disallow: /api/search/ban
+Disallow: /api/search/block
+Disallow: /api/search/unblock
+Disallow: /api/search/report
+Disallow: /api/search/flag
+Disallow: /api/search/moderate
+Disallow: /api/search/approve
+Disallow: /api/search/reject
+Disallow: /api/search/publish
+Disallow: /api/search/unpublish
+Disallow: /api/search/archive
+Disallow: /api/search/delete
+Disallow: /api/search/restore
+Disallow: /api/search/backup
+Disallow: /api/search/recover
+Disallow: /api/search/migrate
+Disallow: /api/search/sync
+Disallow: /api/search/replicate
+Disallow: /api/search/shard
+Disallow: /api/search/partition
+Disallow: /api/search/index
+
+# Allow specific file types
+Allow: *.css
+Allow: *.js
+Allow: *.png
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.gif
+Allow: *.svg
+Allow: *.webp
+Allow: *.ico
+Allow: *.woff
+Allow: *.woff2
+Allow: *.ttf
+Allow: *.eot
+
+# Sitemap location
+Sitemap: https://nutrix.com/sitemap.xml
+
+# Crawl delay for politeness
+Crawl-delay: 1
+
+# Specific bot instructions
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: facebookexternalhit
+Allow: /
+Allow: /api/search
+Allow: /api/food
+Allow: /api/autocomplete
+
+User-agent: Twitterbot
+Allow: /
+Allow: /api/search
+Allow: /api/food
+Allow: /api/autocomplete
+
+User-agent: LinkedInBot
+Allow: /
+Allow: /api/search
+Allow: /api/food
+Allow: /api/autocomplete
+
+User-agent: PinterestBot
+Allow: /
+Allow: /api/search
+Allow: /api/food
+Allow: /api/autocomplete
+
+User-agent: WhatsApp
+Allow: /
+Allow: /api/search
+Allow: /api/food
+Allow: /api/autocomplete
+
+User-agent: TelegramBot
+Allow: /
+Allow: /api/search
+Allow: /api/food
+Allow: /api/autocomplete
+
+User-agent: Slackbot
+Allow: /
+Allow: /api/search
+Allow: /api/food
+Allow: /api/autocomplete
+
+User-agent: Discordbot
+Allow: /
+Allow: /api/search
+Allow: /api/food
+Allow: /api/autocomplete
+
+# Block unwanted bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: BacklinkCrawler
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: SeobilityBot
+Disallow: /
+
+User-agent: LinkdexBot
+Disallow: /
+
+User-agent: ZoominfoBot
+Disallow: /
+
+User-agent: B2BBot
+Disallow: /
+
+User-agent: Magpie-Crawler
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# End of robots.txt

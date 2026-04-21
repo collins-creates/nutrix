@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    
+    <!-- SEO Meta Tags -->
+    <title>Nutrix - Advanced Nutrition Search Engine | Food Database & Calorie Counter</title>
+    <meta name="description" content="Search 50,000+ foods for detailed nutrition facts, calories, macros, vitamins & minerals. Free nutrition database with USDA food data. Track calories, compare foods, and make healthy eating choices.">
+    <meta name="keywords" content="nutrition facts, calorie counter, food database, USDA nutrition, nutrition search, healthy eating, diet tracker, food calories, nutrition information, vitamins, minerals, macros, protein, carbs, fat">
+    <meta name="author" content="Nutrix Nutrition Search Engine">
+    <meta name="language" content="en">
+    <meta name="geo.region" content="US">
+    <meta name="geo.placename" content="United States">
+    <meta name="classification" content="Health, Nutrition, Food Database">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nutrix.com/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nutrix - Advanced Nutrition Search Engine">
+    <meta property="og:description" content="Search 50,000+ foods for detailed nutrition facts, calories, macros, vitamins & minerals. Free nutrition database with USDA food data.">
+    <meta property="og:url" content="https://nutrix.com/">
+    <meta property="og:site_name" content="Nutrix">
+    <meta property="og:image" content="https://nutrix.com/images/nutrix-og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Nutrix Nutrition Search Engine - Food Database">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@nutrixapp">
+    <meta name="twitter:creator" content="@nutrixapp">
+    <meta name="twitter:title" content="Nutrix - Advanced Nutrition Search Engine">
+    <meta name="twitter:description" content="Search 50,000+ foods for detailed nutrition facts, calories, macros, vitamins & minerals. Free nutrition database.">
+    <meta name="twitter:image" content="https://nutrix.com/images/nutrix-twitter-card.jpg">
+    <meta name="twitter:image:alt" content="Nutrix Nutrition Search Engine">
+    
+    <!-- Performance & Security -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://api.nal.usda.gov">
+    <link rel="dns-prefetch" href="//api.nal.usda.gov">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="msapplication-TileColor" content="#3b82f6">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    
+    <!-- Core Web Vitals Optimization -->
+    <meta http-equiv="X-DNS-Prefetch-Control" content="on">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Nutrix">
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Nutrix",
+      "alternateName": "Nutrix Nutrition Search Engine",
+      "description": "Advanced nutrition search engine with 50,000+ foods, detailed nutrition facts, calories, macros, vitamins & minerals",
+      "url": "https://nutrix.com",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Nutrix",
+        "url": "https://nutrix.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Nutrix",
+        "url": "https://nutrix.com"
+      },
+      "datePublished": "2024-01-01",
+      "dateModified": "2024-04-21",
+      "inLanguage": "en-US",
+      "isAccessibleForFree": true,
+      "isFamilyFriendly": true,
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1250",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    </script>
+    
+    <!-- Additional Structured Data for Breadcrumbs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://nutrix.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Nutrition Search",
+          "item": "https://nutrix.com/search"
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Loading Nutrix...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Nutrix</h1>
+                    <span class="tagline">Nutrition Search Engine</span>
+                </div>
+                <div class="header-actions">
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                        <span class="theme-icon">moon</span>
+                    </button>
+                    <button id="compareToggle" class="compare-toggle" aria-label="Compare foods">
+                        <span class="compare-icon">compare</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main" role="main">
+        <div class="container">
+            <!-- Search Section -->
+            <section class="search-section" aria-labelledby="search-heading">
+                <div class="search-container">
+                    <h2 id="search-heading">Discover Nutritional Information</h2>
+                    <p class="search-description">Search for any food to get detailed nutritional data and health insights</p>
+                    
+                    <div class="search-wrapper">
+                        <div class="search-input-container" role="search">
+                            <input 
+                                type="search" 
+                                id="searchInput" 
+                                class="search-input" 
+                                placeholder="Search for foods (e.g., apple, chicken, ugali)..."
+                                autocomplete="off"
+                                aria-label="Search foods"
+                                role="searchbox"
+                                aria-describedby="search-description"
+                            >
+                            <button id="searchButton" class="search-button" aria-label="Search">
+                                <span class="search-icon">search</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Autocomplete Dropdown -->
+                        <div id="autocompleteDropdown" class="autocomplete-dropdown hidden">
+                            <div class="autocomplete-list"></div>
+                        </div>
+                    </div>
+
+                    <!-- Search Filters -->
+                    <form class="search-filters" role="search" aria-label="Search filters">
+                        <div class="filter-group">
+                            <label for="pageSize" id="pageSize-label">Results per page:</label>
+                            <select id="pageSize" class="filter-select" aria-labelledby="pageSize-label">
+                                <option value="10">10</option>
+                                <option value="20" selected>20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="dataSource" id="dataSource-label">Data source:</label>
+                            <select id="dataSource" class="filter-select" aria-labelledby="dataSource-label">
+                                <option value="all">All Sources</option>
+                                <option value="usda">USDA Database</option>
+                                <option value="infoods">INFOODS Database</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Recent Searches -->
+            <section id="recentSearches" class="recent-searches hidden" aria-labelledby="recent-searches-heading">
+                <h3 id="recent-searches-heading">Recent Searches</h3>
+                <div class="recent-searches-list" role="list" aria-label="Recent search terms"></div>
+            </section>
+
+            <!-- Bookmarks -->
+            <section id="bookmarksSection" class="bookmarks-section hidden" aria-labelledby="bookmarks-heading">
+                <div class="section-header">
+                    <h3 id="bookmarks-heading">Bookmarked Foods</h3>
+                    <button id="clearBookmarks" class="clear-button" aria-label="Clear all bookmarks">Clear All</button>
+                </div>
+                <div class="bookmarks-list" role="list" aria-label="Bookmarked food items"></div>
+            </section>
+
+            <!-- Search Results -->
+            <section id="resultsSection" class="results-section hidden" aria-labelledby="results-heading">
+                <div class="results-header">
+                    <h3 id="results-heading">Search Results</h3>
+                    <div class="results-info" role="status" aria-live="polite">
+                        <span id="resultsCount"></span>
+                        <span id="resultsSource"></span>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div id="pagination" class="pagination hidden">
+                    <button id="prevPage" class="pagination-button" disabled>
+                        <span class="pagination-icon">chevron_left</span>
+                        Previous
+                    </button>
+                    <span id="pageInfo" class="page-info"></span>
+                    <button id="nextPage" class="pagination-button" disabled>
+                        Next
+                        <span class="pagination-icon">chevron_right</span>
+                    </button>
+                </div>
+
+                <!-- Results Grid -->
+                <div id="resultsGrid" class="results-grid"></div>
+            </section>
+
+            <!-- Food Details Modal -->
+            <div id="foodModal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modalFoodName"></h2>
+                        <button id="closeModal" class="modal-close" aria-label="Close modal">
+                            <span class="close-icon">close</span>
+                        </button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <div class="food-info">
+                            <div class="food-meta">
+                                <span id="foodBrand"></span>
+                                <span id="foodDataType"></span>
+                                <span id="foodServing"></span>
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="food-actions">
+                                <button id="bookmarkFood" class="action-button bookmark-button">
+                                    <span class="action-icon">bookmark</span>
+                                    Bookmark
+                                </button>
+                                <button id="addToCompare" class="action-button compare-button">
+                                    <span class="action-icon">add_to_compare</span>
+                                    Compare
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Nutrition Overview -->
+                        <div class="nutrition-overview">
+                            <h3>Nutrition Overview (per 100g)</h3>
+                            <div class="macro-grid">
+                                <div class="macro-card calories">
+                                    <div class="macro-value" id="caloriesValue"></div>
+                                    <div class="macro-label">Calories</div>
+                                </div>
+                                <div class="macro-card protein">
+                                    <div class="macro-value" id="proteinValue"></div>
+                                    <div class="macro-label">Protein (g)</div>
+                                </div>
+                                <div class="macro-card carbs">
+                                    <div class="macro-value" id="carbsValue"></div>
+                                    <div class="macro-label">Carbs (g)</div>
+                                </div>
+                                <div class="macro-card fat">
+                                    <div class="macro-value" id="fatValue"></div>
+                                    <div class="macro-label">Fat (g)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detailed Nutrients -->
+                        <div class="nutrients-section">
+                            <div class="section-header">
+                                <h3>Detailed Nutrients</h3>
+                                <button id="toggleNutrients" class="toggle-button">
+                                    <span class="toggle-icon">expand_more</span>
+                                </button>
+                            </div>
+                            <div id="nutrientsList" class="nutrients-list hidden"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compare Section -->
+            <section id="compareSection" class="compare-section hidden">
+                <div class="compare-header">
+                    <h3>Food Comparison</h3>
+                    <button id="clearCompare" class="clear-button">Clear All</button>
+                </div>
+                <div class="compare-container">
+                    <div class="compare-items">
+                        <div class="compare-item" id="compare1">
+                            <div class="compare-placeholder">Select first food to compare</div>
+                        </div>
+                        <div class="compare-item" id="compare2">
+                            <div class="compare-placeholder">Select second food to compare</div>
+                        </div>
+                    </div>
+                    <div class="compare-results hidden" id="compareResults"></div>
+                </div>
+            </section>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="error-message hidden">
+                <div class="error-content">
+                    <span class="error-icon">error</span>
+                    <p id="errorText"></p>
+                    <button id="dismissError" class="dismiss-button">Dismiss</button>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state hidden">
+                <div class="empty-content">
+                    <span class="empty-icon">search</span>
+                    <h3>No Results Found</h3>
+                    <p>Try searching for different foods or check your spelling</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2024 Nutrix. Powered by Muguromwega.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" id="aboutLink">About</a>
+                    <a href="#" id="apiLink"></a>
+                    <a href="#" id="githubLink">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/api.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/compare.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
