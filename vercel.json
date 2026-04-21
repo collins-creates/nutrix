@@ -1,16 +1,13 @@
 {
   "version": 2,
   "name": "nutrix",
-  "builds": [
-    {
-      "src": "backend/server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "frontend/**/*",
-      "use": "@vercel/static"
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
+  "functions": {
+    "backend/server.js": {
+      "maxDuration": 30
     }
-  ],
+  },
   "routes": [
     {
       "src": "/api/(.*)",
@@ -60,11 +57,6 @@
   "env": {
     "NODE_ENV": "production",
     "PORT": "3000"
-  },
-  "functions": {
-    "backend/server.js": {
-      "maxDuration": 30
-    }
   },
   "headers": [
     {
